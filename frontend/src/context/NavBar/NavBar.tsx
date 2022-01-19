@@ -1,14 +1,11 @@
-import { useContext } from 'react';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
-import { Web3Context } from '../Web3Context';
+import { useRouter } from "next/router";
+import Link from "next/link";
 
-import { ToastContainer } from 'react-toastify';
-import MetaMask from './MetaMask';
-import DarkModeToggle from 'src/helpers/DarkModeToggle';
+import { ToastContainer } from "react-toastify";
+import { MetaMask } from "./MetaMask";
+import DarkModeToggle from "src/helpers/DarkModeToggle";
 
-const NavBar = () => {
-	const { etherBalance, tokenBalance } = useContext(Web3Context);
+export const NavBar = () => {
 	const { asPath: path } = useRouter();
 
 	return (
@@ -20,21 +17,12 @@ const NavBar = () => {
 			>
 				<nav>
 					<ul className="flex justify-around text-center">
-						<li className={path === '/' ? 'active-nav' : 'nav-item'}>
+						<li className={path === "/" ? "active-nav" : "nav-item"}>
 							<Link href="/">Home</Link>
-						</li>
-						<li
-							className={path === '/predictiongame' ? 'active-nav' : 'nav-item'}
-						>
-							<Link href="/predictiongame">Prediction Game</Link>
 						</li>
 					</ul>
 				</nav>
 				<div className="flex items-center">
-					<div className="mr-10 pt-1">
-						<p>BP Token Balance: {tokenBalance}</p>
-						<p className="">Ether Balance: {etherBalance}</p>
-					</div>
 					<MetaMask />
 					<div className="ml-5">
 						<DarkModeToggle />
@@ -44,5 +32,3 @@ const NavBar = () => {
 		</>
 	);
 };
-
-export default NavBar;

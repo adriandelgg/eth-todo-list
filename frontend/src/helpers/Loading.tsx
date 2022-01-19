@@ -1,4 +1,4 @@
-import Loader from 'react-loader-spinner';
+import Loader from "react-loader-spinner";
 
 interface Props {
 	isLoading: boolean;

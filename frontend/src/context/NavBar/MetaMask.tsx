@@ -1,19 +1,20 @@
-import { useContext } from "react";
+import { useContext, Dispatch, SetStateAction } from "react";
 import { Web3Context } from "../Web3Context";
 import { Web3Provider } from "@ethersproject/providers";
-
+import { TodoList, TodoList__factory } from "lib/typechain-types/index";
 import { toast } from "react-toastify";
+import { handleToast } from "src/helpers/handleToast";
 
 declare let window: any;
 
 export interface Web3 {
-	contract: ContractFactoryInterface;
+	contract: TodoList;
 	provider: Web3Provider;
 	account: string;
-	setWeb3?: React.Dispatch<React.SetStateAction<Web3>>;
+	setWeb3?: Dispatch<SetStateAction<Web3>>;
 }
 
-const MetaMask = () => {
+export const MetaMask = () => {
 	const { account, setWeb3 } = useContext(Web3Context);
 
 	async function enableEth() {
@@ -26,32 +27,17 @@ const MetaMask = () => {
 				});
 				const chainId = await ethereum.request({ method: "eth_chainId" });
 
-				let contractAddress: string;
-				switch (chainId) {
-					case "0x1": // Mainnet
-						contractAddress = "";
-						break;
-					case "0x3": // Ropsten
-						contractAddress = "";
-						break;
-					case "0x4": // Rinkeby
-						contractAddress = "";
-						break;
-					case "0x89": // Polygon Mainnet
-						contractAddress = "";
-						break;
-					case "0x13881": // Polygon Testnet
-						contractAddress = "";
-						break;
-					default:
-						// Hardhat Local
-						contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+				if (chainId !== "0x7a69") {
+					return handleToast("error", "Must be on the Hardhat network!");
 				}
 
 				const signer = provider.getSigner(address);
 				const account = signer._address;
 
-				const contract = Contract__factory.connect(contractAddress, signer);
+				const contract = TodoList__factory.connect(
+					"0x5FbDB2315678afecb367f032d93F642f64180aa3",
+					signer
+				);
 
 				setWeb3 &&
 					setWeb3((prev: Web3) => ({
@@ -96,5 +82,3 @@ const MetaMask = () => {
 		</div>
 	);
 };
-
-export default MetaMask;
