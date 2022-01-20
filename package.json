@@ -1,20 +1,11 @@
 {
-	"name": "create-eth-ts-dapp",
-	"description": "A template for building Full-Stack Blockchain Dapps using Next.js (React), TypeScript, Tailwind CSS, Hardhat, Solidity, and many more!",
-	"version": "1.1.4",
+	"name": "eth-todo-list",
+	"description": "An Ethereum Todo List Dapp!",
+	"version": "1.0.0",
 	"author": "Adrian Delgado",
 	"license": "MIT",
 	"bin": "./bin/index.js",
 	"main": "./bin/index.js",
-	"repository": {
-		"name": "adriandelgg/create-eth-ts-dapp",
-		"type": "git",
-		"url": "https://github.com/adriandelgg/create-eth-ts-dapp.git"
-	},
-	"bugs": {
-		"url": "https://github.com/adriandelgg/create-eth-ts-dapp/issues"
-	},
-	"homepage": "https://github.com/adriandelgg/create-eth-ts-dapp#readme",
 	"scripts": {
 		"dev": "concurrently \"cd ./hardhat && npx hardhat node\" \"cd ./frontend && yarn dev\"",
 		"hardhat": "cd ./hardhat && hh node",
