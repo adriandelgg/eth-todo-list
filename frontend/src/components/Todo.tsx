@@ -37,7 +37,8 @@ export const Todo = () => {
 	}, [contract, newEvent]);
 
 	return (
-		<div>
+		<div className="prediction-form">
+			<h3 className="h3-heading">Todo List</h3>
 			{todos.map(({ id, content, completed }) => (
 				<div className="flex" key={id}>
 					<input

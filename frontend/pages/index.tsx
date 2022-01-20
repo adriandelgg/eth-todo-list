@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { ListOfTodos } from "src/components/ListOfTodos";
 import { NewTodoForm } from "src/components/NewTodoForm";
+import { Todo } from "src/components/Todo";
 
 const Home: NextPage = () => {
 	return (
@@ -11,7 +11,7 @@ const Home: NextPage = () => {
 			</Head>
 			<section>
 				<NewTodoForm />
-				<ListOfTodos />
+				<Todo />
 			</section>
 		</>
 	);
