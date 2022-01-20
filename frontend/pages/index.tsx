@@ -10,6 +10,7 @@ const Home: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<section>
+				<h1 className="main-heading">🔥 Ethereum Todo List 📝</h1>
 				<NewTodoForm />
 				<Todo />
 			</section>

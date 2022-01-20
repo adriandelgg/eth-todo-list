@@ -17,7 +17,7 @@ export const NewTodoForm = () => {
 	}
 
 	return (
-		<form className="action-card mx-auto" onSubmit={newTodo}>
+		<form className="action-card mx-auto my-10" onSubmit={newTodo}>
 			<h3 className="h3-heading">Add New Todo</h3>
 			<label className="input-label" htmlFor="content">
 				Description
@@ -29,9 +29,10 @@ export const NewTodoForm = () => {
 				id="content"
 				required={true}
 				value={content}
+				placeholder="Enter task"
 				onChange={({ currentTarget }) => setContent(currentTarget.value)}
 			/>
-			<button className="green-btn mt-7" type="submit">
+			<button className="green-btn mt-6" type="submit">
 				Create
 			</button>
 		</form>
